@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<em><h2>Black Friday - Toda a loja com 30% de desconto!</h2></em>
+<nav class="navprodutos">
+    <a href="/produtos" class="btn btn-outline-light">All Categories</a> 
+    {% for categoria in lista_categorias %}
+    <a href="{{ categoria.get_absolute_url }}" class="btn btn-outline-light">{{ categoria.nome }}</a> 
+    {% endfor %}
+</nav>
+<div class="produtos__container">
+    {% for produto in lista_produtos %}
+    <div class="card produto__card">
+        <a href="{{ produto.get_absolute_url }}">
+            <img class="card-img-top" src="{{ produto.imagem.url }}" alt="Card image cap">
+        </a>
+        <div class="card-body">
+            <b><p class="card-title">{{ produto.nome }}</p></b>
+            <p style="color: black;"> R${{ produto.preco }}</p>
+            <a href="{{ produto.get_absolute_url }}" class="btn btn-outline-dark">Saiba Mais</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<style>
+.navprodutos{
+    margin-left: auto;
+    margin-right: auto;
+    width: 25em;
+    padding: 10px;
+    margin-top: 1px;
+}
+.navprodutos a{
+    margin-top: -150px ;
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+}
+h2{
+    background-color: black;
+    color: white;
+    padding: 15px;
+    padding-bottom: 80px;
+    font-size: 50px;
+    text-align: center;
+    margin-top: -15px;
+}
+
+
+.produtos__container {
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    display: flex;
+}
+
+.produto__img {
+    width: 150px;
+}
+
+.produto__card {
+    margin: 5px;
+    width: 20rem;
+    padding: 10px;
+    box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    text-align: center;
+}
+
+.card-title{
+    font-size: 1.2rem;
+    color: black;
+}
+
+.card-img-top:hover{
+    opacity: 80%;
+    scale: 110%;
+    transition: 0.3s;
+}
+.produto__card:hover{
+    scale: 102%;
+    transition: 0.3s;
+}
+.btn-secondary:hover{
+    scale: 105%;
+    transition: 0.3s;
+}
+</style>   
+{% endblock conteudo %}
+
+
+
+

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block conteudo %}
+
+    <i><b><h1 style="padding-left: auto; padding-right: auto; margin-left: auto; margin-right: auto; color: black; font-size: 200px; text-align: center;">DOM SHOES</h1></b></i>
+        {% if user.is_anonymous %}
+            <h3 style="padding: 50px; margin-left: auto; margin-right: auto; width: 50em; text-align: center;">Não conectado {{ user.get_name }}</h3>
+            <a style="padding: 5px; margin-left: 1060px; margin-right: 700px; margin-top: -180px;" href="{% url 'login' %}" class="btn btn-success">Login</a>
+        {% else %}
+            <h3 style="padding: 50px; margin-left: auto; margin-right: auto; width: 50em; text-align: center;">Olá {{ user.username }}</h3>
+            <a style="padding: 5px; margin-left: 1030px; margin-right: 700px; margin-top: -180px;" href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+        {% endif %}
+    {% endblock conteudo %}

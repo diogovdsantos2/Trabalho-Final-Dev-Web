@@ -1,0 +1,59 @@
+
+    <nav class="navbar">
+        <a href="/">Página Principal  </a> |
+        <a href="/produtos">  Produtos  </a> |
+        <a href="/contato">  Entre em contato  </a> |
+        <a href="/sobre">  Sobre nós  </a>
+        <!-- {% if not user.is_anonymous %} -->
+            <!-- <a href="/admin/auth/user/">Usuários</a> -->
+            <!-- <a href="/admin/produtos/produto/">Cadastrar Produtos</a> -->
+            <!-- <a href="/admin/produtos/categoria/">Cadastrar Categoria</a> -->
+            <!-- <a href="/admin/pedidos/pedido/">Pedidos</a> -->
+        <!-- {% endif %} -->
+    </nav>
+    <hr>
+   
+
+<h4>{% with quantidade_itens=carrinho|length %}
+    {% if quantidade_itens > 0 %}
+    Seu carrinho de compras:
+    <a href="{% url 'carrinho:detalhes_carrinho' %}">{{ quantidade_itens }}
+        produto{{ quantidade_itens|pluralize }} - R${{ carrinho.get_total_geral }}</a>
+    {% else %}
+   <!-- Carrinho Vazio -->
+    {% endif %}
+    {% endwith %}
+</h4>
+
+<style>
+.navbar{
+    backface-visibility: hidden;
+    align-items: center;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50em;
+    margin-top: 8px;
+}
+.navbar a{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    color: black;
+    align-items: center;
+}
+
+.navbar a:hover{
+    opacity: 50%;
+    scale: 108%;
+    transition: 0.2s;
+}
+
+h4{
+    color: black;
+    text-align: center;
+    font-size: 15px;
+    margin-top: 30px;
+}
+</style>
